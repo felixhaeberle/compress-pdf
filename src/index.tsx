@@ -2,19 +2,15 @@ import { Form, ActionPanel, Action, showToast, getPreferenceValues, Toast } from
 import fs from "fs";
 import https from "https";
 import CloudConvert from "cloudconvert";
-import { useState } from "react";
 
 // get preferences
 const apiKey = getPreferenceValues().api_key;
 const cloudConvert = new CloudConvert(apiKey);
 
 export default function Command() {
-  // show info state
-  const [showInfo, setShowInfo] = useState(false);
   async function compressPdf(file: string) {
     try {
       // set loading state
-      setShowInfo(true);
       await showToast(Toast.Style.Animated, "Compressing PDF...");
 
       // create task
