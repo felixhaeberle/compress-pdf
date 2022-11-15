@@ -52,7 +52,7 @@ export default function Command() {
       const convertedFile = cloudConvert.jobs.getExportUrls(job)[0];
       if (!convertedFile.url) {
         await showToast(Toast.Style.Failure, "Error", "No file found");
-        return;
+        return false;
       }
 
       // add -compressed to filename
@@ -87,7 +87,7 @@ export default function Command() {
               if (!fs.existsSync(file) || !fs.lstatSync(file).isFile()) {
                 return false;
               }
-
+              // compress pdf
               compressPdf(file);
             }}
           />
