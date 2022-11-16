@@ -1,4 +1,4 @@
-import { Form, ActionPanel, Action, showToast, getPreferenceValues, Toast } from "@raycast/api";
+import { Form, ActionPanel, Action, showToast, getPreferenceValues, Toast, open, popToRoot } from "@raycast/api";
 import fs from "fs";
 import https from "https";
 import CloudConvert from "cloudconvert";
@@ -70,6 +70,10 @@ export default function Command() {
 
       // show success toast
       await showToast(Toast.Style.Success, "PDF Compressed", "Your PDF has been compressed");
+      // open folder
+      open(folderPath);
+      // pop to root
+      popToRoot();
     } catch (error: any) {
       // show error toast
       await showToast(Toast.Style.Failure, "Error", error.message);
